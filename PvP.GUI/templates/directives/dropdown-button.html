@@ -1,0 +1,12 @@
+﻿<div class="dropdown">
+    <a href="#" class="btn btn-default text-left" data-toggle="dropdown"
+       style="min-width: 100%">
+        <span class="pull-left">{{selectedItem}}</span>
+        <span class="pull-right">
+            <img class="img-responsive pull-left" src="/images/dropdown-arrow.png" alt="Arrow Down" />
+        </span>
+    </a>
+    <ul class="dropdown-menu" role="menu" style="min-width: 100%">
+        <li ng-repeat="item in items"><a tabindex="-1" href="javascript:void(0)">{{item}}</a></li>
+    </ul>
+</div>

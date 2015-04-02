@@ -1,0 +1,46 @@
+﻿<div class="page-header"><h3>New card</h3></div>
+
+
+<div class="row">
+    <div class="col-lg-offset-4 col-lg-4" ng-show="loading">
+        <img class="img-responsive" ng-src="http://mignews.com.ua/modules/news/images/articles/photo/changing/3028759-samaya-seksualnaya-zhenschina-planety-n.jpg">
+    </div>
+</div>
+
+<div ng-hide="loading">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="text" class="input-lg" style="width: 100%" ng-model="word" ng-readonly="true" placeholder="word" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="text" class="input-lg" style="width: 100%" ng-model="translation" ng-readonly="true" placeholder="translation" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-offset-2 col-lg-2">
+            <button class="btn btn-info btn-lg" style="width: 100%" ng-click="addCard()">Create card</button>
+        </div>
+    </div>
+
+    
+
+    <div class="row" style="padding: 20px 0">
+        <div class="col-lg-2 col-md-2 col-xs-2" style="padding: 5px" ng-repeat="image in images">
+            <img ng-src="{{image.url}}" width="400" height="300" class="img-responsive" ng-class="{'img-thumbnail-custom': image.selected}"
+                 ng-click="selectOrUnselectImage(image)"></img>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding: 20px">
+    <div class="text-center">
+        <button class="btn btn-default btn-lg" ng-click="getNextWord()">Next word</button>
+    </div>
+</div>

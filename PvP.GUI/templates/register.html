@@ -1,0 +1,112 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form name="register_form" role="form" novalidate>
+            <h2>Please Sign Up <small>It's free and always will be.</small></h2>
+            <hr class="colorgraph">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input ng-model="firstName" required type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+                        <div class="text-danger" ng-show="register_form.first_name.$error.required && register_form.first_name.$dirty">Please enter your first name</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input ng-model="lastName" required type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+                        <div class="text-danger" ng-show="register_form.last_name.$error.required && register_form.last_name.$dirty"> enter your last name</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input ng-model="displayName" required type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3"
+                       ng-minlength="3" ng-maxlength="16">
+                <div class="text-danger" ng-show="register_form.display_name.$error.required && register_form.display_name.$dirty">Please enter your display name</div>
+            </div>
+            <div class="form-group">
+                <input ng-model="email" required ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+                <div class="text-danger" ng-show="register_form.email.$error.required && register_form.email.$dirty">Please enter your email address</div>
+                <div class="text-danger" ng-show="register_form.email.$error.pattern && register_form.email.$dirty">Please enter your email address</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input ng-model="password" required type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5"
+                               ng-minlength="8" ng-maxlength="16">
+                        <div class="text-danger" ng-show="register_form.password.$error.required && register_form.password.$dirty">Please enter your password</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input ng-model="confirmPassword" required compare-to="password" type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+                        <div class="text-danger" ng-show="register_form.password_confirmation.$error.required && register_form.password_confirmation.$dirty">Please enter your password confirmation</div>
+                        <div class="text-danger" ng-show="register_form.password_confirmation.$error.compareTo && register_form.password_confirmation.$dirty">Passwords don't match</div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-md-3">
+                    <check-button name="terms" ng-model="termsAccepted" is-true tabindex="6" />
+                </div>
+                <div class="col-xs-8 col-sm-9 col-md-9">
+                    By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#termsAccepted">Terms and Conditions</a> set out by this site, including our Cookie Use.
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="text-danger" ng-show="register_form.terms.$error.isTrue && register_form.terms.$dirty">Your should accept terms and conditions</div>
+                </div>
+            </div>
+
+            <hr class="colorgraph">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <input type="submit" value="Register" ng-disabled="register_form.$invalid" ng-click="register()" class="btn btn-primary btn-block btn-lg" tabindex="7">
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <input type="submit" value="Sign In" ng-disabled="register_form.$invalid" ng-click="signIn()" class="btn btn-success btn-block btn-lg" tabindex="8">
+                </div>
+            </div>
+                
+            <div class="row" ng-show="errors">
+                <div class="text-danger">
+                    <ul>
+                        <li ng-repeat="error in errors">{{error}}</li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="termsAccepted" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="agree()">I Agree</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--
+    Show all errors
+    <div class="text-danger"><ul>
+                             <li ng-repeat="(key, errors) in register_form.$error track by $index">
+                                 <strong>{{ key }}</strong> errors
+                                 <ul>
+                                     <li ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>
+                                 </ul>
+                             </li>
+</ul></div>-->
